@@ -7,7 +7,7 @@ import { useState } from 'react';
 export default function HomeScreen() {
   const [pergunta, setPergunta] = useState('');
 
-  const apikey = "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";
+ 
 
   return (
     <ImageBackground source={background} style={styles.container}>
