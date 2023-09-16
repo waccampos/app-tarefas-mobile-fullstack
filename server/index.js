@@ -2,16 +2,17 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql2");
 const cors = require("cors") 
+require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
 
 const db = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password:"123123",
-    database: "projeto_mobile",
-    port: 3307
+    host: process.env.DB_HOST, 
+    user: process.env.DB_USER,      
+    password: process.env.DB_PASSWORD, 
+    database: process.env.DB_NAME,
+    port: process.env.DB_PORT
 })
 ///pag de anotacoes
 app.post("/anotar",(req, res) => {
@@ -70,6 +71,6 @@ app.delete("/agenda/:id",(req,res) => {
 
 });
 
-app.listen(3001,()=> {
+app.listen(process.env.PORT,()=> {
     console.log("rodando servidor")
 });
